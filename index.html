@@ -113,8 +113,7 @@ input.warn-input{border-color:#e74c3c !important;background:#fff8f8}
   <div id="t1ok" class="toast tok">✅ 수험번호가 저장되었습니다.</div>
   <div id="t1er" class="toast terr">❌ 저장 중 오류가 발생했습니다.</div>
   <div class="toolbar">
-    <select id="mC" onchange="renderMy()"><option value="">반 선택</option><option>1반</option><option>2반</option><option>3반</option><option>4반</option><option>5반</option><option>6반</option><option>7반</option><option>8반</option><option>9반</option><option>10반</option><option>11반</option></select>졸업생</option><option>
-    <input id="mT" placeholder="담임 교사명 입력 후 조회" oninput="renderMy()">
+    <select id="mC" onchange="renderMy()"><option value="">반 선택</option><option>1반</option><option>2반</option><option>3반</option><option>4반</option><option>5반</option><option>6반</option><option>7반</option><option>8반</option><option>9반</option><option>10반</option><option>11반</option></option>졸업생</option><select>
     <span id="mCnt" class="cnt">0건</span>
     <button class="btn btn-sm rbtn" onclick="loadAll(1)">🔄 새로고침</button>
   </div>
@@ -137,7 +136,7 @@ input.warn-input{border-color:#e74c3c !important;background:#fff8f8}
   <p class="stitle">학생별 신청 현황</p>
   <div class="toolbar">
     <input id="sQ" placeholder="학생명 검색..." oninput="renderStu()">
-    <select id="sC" onchange="renderStu()"><option value="">전체 반</option><option>1반</option><option>2반</option><option>3반</option><option>4반</option><option>5반</option><option>6반</option><option>7반</option><option>8반</option><option>9반</option><option>10반</option><option>11반</option></select>졸업생</option><option>
+    <select id="sC" onchange="renderStu()"><option value="">전체 반</option><option>1반</option><option>2반</option><option>3반</option><option>4반</option><option>5반</option><option>6반</option><option>7반</option><option>8반</option><option>9반</option><option>10반</option><option>11반</option></option>졸업생</option><select>
     <span id="sCnt" class="cnt">0건</span>
     <button class="btn btn-sm rbtn" onclick="loadAll(3)">🔄 새로고침</button>
   </div>
@@ -164,7 +163,7 @@ input.warn-input{border-color:#e74c3c !important;background:#fff8f8}
     </div>
     <div class="toolbar">
       <input id="aQ" placeholder="학생·대학·학과·담임 검색..." oninput="renderAdmin()">
-      <select id="aCls" onchange="renderAdmin()"><option value="">전체 반</option><option>1반</option><option>2반</option><option>3반</option><option>4반</option><option>5반</option><option>6반</option><option>7반</option><option>8반</option><option>9반</option><option>10반</option><option>11반</option></select>졸업생</option><option>
+      <select id="aCls" onchange="renderAdmin()"><option value="">전체 반</option><option>1반</option><option>2반</option><option>3반</option><option>4반</option><option>5반</option><option>6반</option><option>7반</option><option>8반</option><option>9반</option><option>10반</option><option>11반</option></option>졸업생</option><select>
       <select id="aSt" onchange="renderAdmin()"><option value="">전체 상태</option><option value="대기">승인 대기</option><option value="완료">승인 완료</option><option value="취소">취소</option></select>
       <select id="aSo" onchange="renderAdmin()"><option value="ts">접수순</option><option value="cls">반순</option><option value="univ">대학순</option><option value="stu">학생순</option></select>
       <span id="aCnt" class="cnt">0건</span>
