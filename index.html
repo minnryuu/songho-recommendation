@@ -85,7 +85,15 @@ input.warn-input{border-color:#e74c3c !important;background:#fff8f8}
   <div id="t0er" class="toast terr">❌ 제출 중 오류가 발생했습니다. 다시 시도해주세요.</div>
   <div class="g2">
     <div class="fg"><label>담임 교사명 *</label><input id="fT" placeholder="홍길동"></div>
-    <div class="fg"><label>반 *</label><select id="fC"><option value="">선택</option><option>1반</option><option>2반</option><option>3반</option><option>4반</option><option>5반</option><option>6반</option><option>7반</option><option>8반</option><option>9반</option><option>10반</option><option>11반</option><option>졸업생</option></select>
+    <div class="fg">
+      <label>반 *</label>
+      <select id="fC">
+        <option value="">선택</option>
+        <option>1반</option><option>2반</option><option>3반</option><option>4반</option><option>5반</option>
+        <option>6반</option><option>7반</option><option>8반</option><option>9반</option><option>10반</option><option>11반</option>
+        <option>졸업생</option>
+      </select>
+    </div>
     <div class="fg"><label>학생 이름 *</label><input id="fS" placeholder="김학생"></div>
     <div class="fg"><label>학생 연락처 *</label><input id="fP" placeholder="010-0000-0000"></div>
     <div class="fg">
@@ -113,10 +121,16 @@ input.warn-input{border-color:#e74c3c !important;background:#fff8f8}
   <div id="t1ok" class="toast tok">✅ 수험번호가 저장되었습니다.</div>
   <div id="t1er" class="toast terr">❌ 저장 중 오류가 발생했습니다.</div>
   <div class="toolbar">
-    <select id="mC" onchange="renderMy()"><option value="">반 선택</option><option>1반</option><option>2반</option><option>3반</option><option>4반</option><option>5반</option><option>6반</option><option>7반</option><option>8반</option><option>9반</option><option>10반</option><option>11반</option><option>졸업생</option></select>
+    <select id="mC" onchange="renderMy()">
+      <option value="">반 선택</option>
+      <option>1반</option><option>2반</option><option>3반</option><option>4반</option><option>5반</option>
+      <option>6반</option><option>7반</option><option>8반</option><option>9반</option><option>10반</option><option>11반</option>
+      <option>졸업생</option>
+    </select>
+    <span id="mCnt" class="cnt">0건</span>
     <button class="btn btn-sm rbtn" onclick="loadAll(1)">🔄 새로고침</button>
   </div>
-  <div id="mBody"><div class="loading">반과 담임 교사명을 입력하여 조회하세요.</div></div>
+  <div id="mBody"><div class="loading">반을 선택하여 조회하세요.</div></div>
 </div>
 
 <!-- 대학별 -->
@@ -135,8 +149,13 @@ input.warn-input{border-color:#e74c3c !important;background:#fff8f8}
   <p class="stitle">학생별 신청 현황</p>
   <div class="toolbar">
     <input id="sQ" placeholder="학생명 검색..." oninput="renderStu()">
-    <select id="sC" onchange="renderStu()"><option value="">전체 반</option><option>1반</option><option>2반</option><option>3반</option><option>4반</option><option>5반</option><option>6반</option><option>7반</option><option>8반</option><option>9반</option><option>10반</option><option>11반</option><option>졸업생</option></select>
-    <span id="sCnt" class="cnt">0건</span>11반</option></option>졸업생</option><select>
+    <select id="sC" onchange="renderStu()">
+      <option value="">전체 반</option>
+      <option>1반</option><option>2반</option><option>3반</option><option>4반</option><option>5반</option>
+      <option>6반</option><option>7반</option><option>8반</option><option>9반</option><option>10반</option><option>11반</option>
+      <option>졸업생</option>
+    </select>
+    <span id="sCnt" class="cnt">0건</span>
     <button class="btn btn-sm rbtn" onclick="loadAll(3)">🔄 새로고침</button>
   </div>
   <div id="sBody"><div class="loading"><span class="spinner"></span>불러오는 중...</div></div>
@@ -162,7 +181,12 @@ input.warn-input{border-color:#e74c3c !important;background:#fff8f8}
     </div>
     <div class="toolbar">
       <input id="aQ" placeholder="학생·대학·학과·담임 검색..." oninput="renderAdmin()">
-      <select id="aCls" onchange="renderAdmin()"><option value="">전체 반</option><option>1반</option><option>2반</option><option>3반</option><option>4반</option><option>5반</option><option>6반</option><option>7반</option><option>8반</option><option>9반</option><option>10반</option><option>11반</option><option>졸업생</option><select>
+      <select id="aCls" onchange="renderAdmin()">
+        <option value="">전체 반</option>
+        <option>1반</option><option>2반</option><option>3반</option><option>4반</option><option>5반</option>
+        <option>6반</option><option>7반</option><option>8반</option><option>9반</option><option>10반</option><option>11반</option>
+        <option>졸업생</option>
+      </select>
       <select id="aSt" onchange="renderAdmin()"><option value="">전체 상태</option><option value="대기">승인 대기</option><option value="완료">승인 완료</option><option value="취소">취소</option></select>
       <select id="aSo" onchange="renderAdmin()"><option value="ts">접수순</option><option value="cls">반순</option><option value="univ">대학순</option><option value="stu">학생순</option></select>
       <span id="aCnt" class="cnt">0건</span>
@@ -223,13 +247,10 @@ function checkUnivWarn() {
   const inp  = document.getElementById('fU');
   if (val.length < 2) { warn.classList.remove('show'); inp.classList.remove('warn-input'); return; }
   const v = val.trim();
-  // 1순위: 입력값으로 시작하는 가장 구체적인 항목 (ex. '한양대학교 에리카' 입력 → 에리카 캠퍼스 우선)
   const exact = limitedUnivs.find(u => u.name && String(u.name).trim() === v);
   const startsWith = limitedUnivs.find(u => {
     if (!u.name) return false;
     const uName = String(u.name).trim();
-    // 입력값이 대학명과 정확히 일치하거나, 대학명이 "입력값 + 공백"으로 이어지지 않는 경우만
-    // ex) '한양대학교 에리카' 입력 시 '한양대학교' 항목은 건너뜀
     if (v.startsWith(uName) && v[uName.length] === ' ') return false;
     return uName.startsWith(v);
   });
@@ -328,17 +349,17 @@ function checkPw() {
   }
 }
 
-function showToast(id) { const t = document.getElementById(id); t.style.display='flex'; setTimeout(()=>t.style.display='none', 3000); }
+function showToast(id) { const t = document.getElementById(id); if(t) { t.style.display='flex'; setTimeout(()=>t.style.display='none', 3000); } }
 function sb(s) { return s==='완료'?'<span class="b-done">승인 완료</span>':s==='취소'?'<span class="b-cancel">취소</span>':'<span class="b-wait">승인 대기</span>'; }
 function noId() { return '<span class="mi">미입력</span>'; }
 function tw(h) { return `<div class="tw"><table>${h}</table></div>`; }
 function emp(m) { return `<div style="text-align:center;padding:2rem;color:#aaa;font-size:13px">${m}</div>`; }
 
 function renderMy() {
-  const cls = document.getElementById('mC').value, teacher = document.getElementById('mT').value.trim();
-  let rows = recs.filter(r => (!cls||r.cls===cls) && (!teacher||String(r.teacher).includes(teacher)));
+  const cls = document.getElementById('mC').value;
+  let rows = recs.filter(r => (!cls||r.cls===cls));
   document.getElementById('mCnt').textContent = rows.length + '건';
-  if (!rows.length) { document.getElementById('mBody').innerHTML = emp('조회된 내역이 없습니다.<br><small>반과 담임 교사명을 입력하여 조회하세요.</small>'); return; }
+  if (!rows.length) { document.getElementById('mBody').innerHTML = emp('조회된 내역이 없습니다.<br><small>반을 선택하여 조회하세요.</small>'); return; }
   const h = `<thead><tr><th>일시</th><th>학생</th><th>연락처</th><th>대학</th><th>학과</th><th>전형</th><th style="color:#1a6ef5">수험번호 입력</th><th>상태</th><th>취소</th></tr></thead>`;
   const b = rows.map(r => `
     <tr class="${r.status==='취소'?'cr':''}">
