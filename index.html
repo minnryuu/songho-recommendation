@@ -66,6 +66,7 @@ tr:hover td{background:#fafaf8}
 .univ-warn.show{display:flex;gap:7px;align-items:flex-start}
 input.warn-input{border-color:#e74c3c !important;background:#fff8f8}
 </style>
+<script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
 </head>
 <body>
 
@@ -169,6 +170,7 @@ input.warn-input{border-color:#e74c3c !important;background:#fff8f8}
       <select id="aSo" onchange="renderAdmin()"><option value="ts">접수순</option><option value="cls">반순</option><option value="univ">대학순</option><option value="stu">학생순</option></select>
       <span id="aCnt" class="cnt">0건</span>
       <button class="btn btn-sm rbtn" onclick="loadAll(4)">🔄 새로고침</button>
+      <button class="btn btn-sm" onclick="exportExcel()" style="background:#eaf3ff;color:#1a6ef5;border-color:#a9c9f5">📥 엑셀 내보내기</button>
     </div>
     <div id="aBody"><div class="loading"><span class="spinner"></span>불러오는 중...</div></div>
 
@@ -416,6 +418,27 @@ function renderAdmin() {
   document.getElementById('aBody').innerHTML = tw(h + `<tbody>${b}</tbody>`);
 }
 
+  
+function exportExcel() {
+  const data = recs.map(r => ({
+    '접수일시': r.ts,
+    '반': r.cls,
+    '학생': r.stu,
+    '연락처': r.phone,
+    '대학': r.univ,
+    '학과': r.dept,
+    '전형': r.type,
+    '담임': r.teacher,
+    '수험번호': r.examNo || '',
+    '상태': r.status
+  }));
+  const ws = XLSX.utils.json_to_sheet(data);
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, '추천전형대장');
+  ws['!cols'] = [{wch:14},{wch:6},{wch:8},{wch:15},{wch:16},{wch:14},{wch:16},{wch:8},{wch:14},{wch:10}];
+  XLSX.writeFile(wb, '26년_송호고_추천전형대장.xlsx');
+}
+  
 loadAll(0);
 </script>
 </body>
