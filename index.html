@@ -241,7 +241,7 @@ function checkUnivWarn() {
   if (m) {
     const lim  = m.limit ? ` (제한 인원: ${m.limit}명)` : '';
     const note = m.note  ? m.note + '. ' : '';
-    msg.textContent = `[인원 제한] ${m.name}${lim} — ${note}캠퍼스인 경우 뒤에 적어주세요(예-한양대학교 에리카). 진학부에서 잔여 인원을 먼저 확인해주세요.`;
+    msg.textContent = `[인원 제한] ${m.name}${lim} — ${note}캠퍼스인 경우 뒤에 적어주세요(예-한양대학교 에리카).`;
     warn.classList.add('show'); inp.classList.add('warn-input');
   } else {
     warn.classList.remove('show'); inp.classList.remove('warn-input');
